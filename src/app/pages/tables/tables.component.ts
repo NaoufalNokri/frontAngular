@@ -12,7 +12,7 @@ export class TablesComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
   public clients: Agent[];
-  constructor(private agenttService: AgentService ) {}
+  constructor(private agentService: AgentService ) {}
 
   ngOnInit() {
     this.displayAllClients();
@@ -33,7 +33,7 @@ export class TablesComponent implements OnInit {
   
 
   public getClients(): void {
-    this.agenttService.getAgent().subscribe(
+    this.agentService.getAgents().subscribe(
       (response: Agent[]) => {
         this.clients = response;  
       },

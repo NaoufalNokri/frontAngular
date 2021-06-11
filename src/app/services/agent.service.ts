@@ -13,7 +13,7 @@ export class AgentService {
   private apiServerUrl = environment.apiBaseUrl;
   constructor(private http: HttpClient) { }
 
-  public getAgent(): Observable<Agent[]> {
+  public getAgents(): Observable<Agent[]> {
     return this.http.get<Agent[]>(`${this.apiServerUrl}/agent/all`);
   }
 
