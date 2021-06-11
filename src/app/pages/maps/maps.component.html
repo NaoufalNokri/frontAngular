@@ -1,0 +1,133 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header bg-transparent">
+         
+                  <div class="row">
+                    <div class="col-md-10">
+                      <h3>Listes des Clients</h3>
+                    </div>
+                    <div class="pull-right ">
+                      <button   class="btn btn-dark" data-toggle="modal" data-target="#exampleModal"> 
+                        <i class="fa fa-plus"></i> New Client
+                      </button> 
+                    </div>
+                  </div>
+                  
+                  
+        
+          
+          
+          
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">New Client</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form #f="ngForm" (ngSubmit)="OnSaveCompte(f.value)">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Identifiant</label>
+                      <input type="email" class="form-control"  aria-describedby="emailHelp" name="Enterid" ngModel>
+                      
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Nom</label>
+                      <input type="text" class="form-control"  name="nom" ngModel>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Prenom</label>
+                      <input type="text" class="form-control" name="prenom" ngModel >
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" class="form-control"  aria-describedby="emailHelp" name="Enteremail" ngModel>
+                      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Telephone</label>
+                      <input type="text" class="form-control" name="numer" ngModel >
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Login</label>
+                      <input type="email" class="form-control" aria-describedby="emailHelp" name="Login" ngModel>
+          
+                    </div>
+          
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" class="form-control" name="Pasfsword" ngModel>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Agence</label>  
+                      
+                        
+                        <select class="form-control" name="type"  required ngModel>
+                          <option selected disabled>Choix de l'agent...</option>
+                          <optgroup label="Type de compte">
+                            <option value="Courant">Courant</option>
+                            <option value="Epargne">Epargne</option>
+                          </optgroup>
+                        </select>
+                      
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="card-body">
+          <table datatable="ng" id="datatableexample" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Email</th>
+                    <th>Agence</th>
+                    
+                </tr>
+            </thead>
+            <tbody *ngIf="clients">
+                <tr *ngFor="let client of clients">
+                  <td>{{client.id}}</td>
+                  <td>{{client.nom}}</td>
+                  <td>{{client.prenom}}</td>
+                  <td>{{client.email}}</td>
+                  <td>{{client.agence.nom}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Email</th>
+                    <th>Agence</th>
+                </tr>
+            </tfoot>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
