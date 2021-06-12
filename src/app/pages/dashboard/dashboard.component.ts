@@ -1,5 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+
 import Chart from 'chart.js';
+import { environment } from 'src/environments/environment';
 
 // core components
 import {
@@ -21,9 +24,76 @@ export class DashboardComponent implements OnInit {
   public salesChart;
   public clicked: boolean = true;
   public clicked1: boolean = false;
+  public nombre_client:any;
+  public nombre_agence:any;
+  public nombre_agent:any;
+  public nombre_virement:any="15";
+
+  constructor(private http: HttpClient) { }
+
+  OnGetAllAgence(){
+    this.http.get(environment.apiBaseUrl+"/agence/all")
+                              .subscribe(
+                                (res) =>{
+                                  this.nombre_agence=Object.keys(res).length;
+                                
+                                
+                              },err=>{
+                              console.log(err);
+                              })
+
+
+}
+    
+  OnGetAllClient(){
+    this.http.get(environment.apiBaseUrl+"/client/all")
+                              .subscribe(
+                                (res) =>{
+                                  this.nombre_client=Object.keys(res).length;
+                                
+                                
+                              },err=>{
+                              console.log(err);
+                              })
+
+
+  }
+
+  OnGetAllAgent(){
+    this.http.get(environment.apiBaseUrl+"/agent/all")
+                              .subscribe(
+                                (res) =>{
+                                  this.nombre_agent=Object.keys(res).length;
+                                
+                                
+                              },err=>{
+                              console.log(err);
+                              })  
+
+
+  }
+  
+  OnGetAllVirement(){
+    this.http.get(environment.apiBaseUrl+"/virement/all")
+                              .subscribe(
+                                (res) =>{
+                                  this.nombre_virement=Object.keys(res).length;
+                                
+                                
+                              },err=>{
+                              console.log(err);
+                              })  
+
+
+  }
+
+  
 
   ngOnInit() {
-
+    this.OnGetAllClient();
+    this.OnGetAllAgence();
+    this.OnGetAllAgent();
+    this.OnGetAllVirement();
     this.datasets = [
       [0, 20, 10, 30, 15, 40, 20, 60, 60],
       [0, 20, 5, 25, 10, 30, 15, 40, 40]
