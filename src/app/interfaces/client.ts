@@ -11,5 +11,6 @@ export interface Client {
   password: string;
   agence: Agence;
   compte: Compte;
+
 }
 

@@ -61,10 +61,21 @@ export class MapsComponent implements OnInit {
     );
   }
 
-  OnSaveClient(f:any){
+  OnSaveClient(f:NgForm){
+
+
+    console.log(f.value);
+    this.clientService.addClient(f.value).subscribe(
+      (response: Client) => {
+          console.log(response);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+/*
     console.log(f.nom);
-    var client:Client;
-    this.clientAj.nom = f.nom;
+    this.clientAj.setNom = f.nom;
     this.agenceService.getAgenceById(f.agence).subscribe(
       (response: Agence) => {
         this.clientAj.agence = response;  
@@ -84,7 +95,7 @@ export class MapsComponent implements OnInit {
         alert(error.message);
       }
     );
-
+*/
 }
 }
 
