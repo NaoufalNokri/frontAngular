@@ -1,9 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Agence } from 'src/app/interfaces/Agence';
 import { Agent } from 'src/app/interfaces/Agent';
 import { AgenceService } from 'src/app/services/agence.service';
 import { AgentService } from 'src/app/services/agent.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'icons-tables',
@@ -29,7 +31,7 @@ export class IconsComponent implements OnInit {
         lengthMenu : [5, 10, 25],
         order:[[1,"asc"]]
     } );
-    }, 5);
+    }, 500);
     
   }
   
@@ -45,4 +47,16 @@ export class IconsComponent implements OnInit {
     );
   }
 
+  OnSaveAgence(f:NgForm){
+    console.log(f.value);
+    this.agenceService.addAgence(f.value).subscribe(
+      (response: Agence) => {
+          console.log(response);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+
+}
 }

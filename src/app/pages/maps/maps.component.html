@@ -40,12 +40,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <form #f="ngForm" (ngSubmit)="OnSaveCompte(f.value)">
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Identifiant</label>
-                      <input type="email" class="form-control"  aria-describedby="emailHelp" name="Enterid" ngModel>
-                      
-                    </div>
+                  <form #f="ngForm" (ngSubmit)="OnSaveClient(f.value)">
                     <div class="form-group">
                       <label for="exampleInputPassword1">Nom</label>
                       <input type="text" class="form-control"  name="nom" ngModel>
@@ -56,32 +51,30 @@
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Email address</label>
-                      <input type="email" class="form-control"  aria-describedby="emailHelp" name="Enteremail" ngModel>
+                      <input type="email" class="form-control"  aria-describedby="emailHelp" name="email" ngModel>
                       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Telephone</label>
-                      <input type="text" class="form-control" name="numer" ngModel >
+                      <input type="text" class="form-control" name="tele" ngModel >
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Login</label>
                       <input type="email" class="form-control" aria-describedby="emailHelp" name="Login" ngModel>
-          
                     </div>
           
                     <div class="form-group">
                       <label for="exampleInputPassword1">Password</label>
-                      <input type="password" class="form-control" name="Pasfsword" ngModel>
+                      <input type="password" class="form-control" name="password" ngModel>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Agence</label>  
                       
                         
-                        <select class="form-control" name="type"  required ngModel>
-                          <option selected disabled>Choix de l'agent...</option>
-                          <optgroup label="Type de compte">
-                            <option value="Courant">Courant</option>
-                            <option value="Epargne">Epargne</option>
+                        <select class="form-control" name="agence"  required ngModel>
+                          <option selected disabled>Choix de l'agence</option>
+                          <optgroup label="Agence">
+                            <option *ngFor="let agence of agences" value="{{agence.id}}">{{agence.nom}}</option>
                           </optgroup>
                         </select>
                       

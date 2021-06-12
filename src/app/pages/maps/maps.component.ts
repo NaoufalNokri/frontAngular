@@ -1,6 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Agence } from 'src/app/interfaces/Agence';
 import { Client } from 'src/app/interfaces/client';
+import { AgenceService } from 'src/app/services/agence.service';
 import { ClientService } from 'src/app/services/client.service';
 declare const google: any;
 
@@ -12,13 +15,16 @@ declare const google: any;
 export class MapsComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
+  public clientAj: Client;
   public clients: Client[];
-  constructor(private clientService: ClientService ) {}
+  public agences: Agence[];
+  constructor(private clientService: ClientService,private agenceService: AgenceService ) {}
 
   ngOnInit() {
     this.displayAllClients();
   }
   public displayAllClients():void{
+    this.getAgences();
     this.getClients();
     setTimeout(()=>{
       $('#datatableexample').DataTable( {
@@ -28,7 +34,7 @@ export class MapsComponent implements OnInit {
         lengthMenu : [5, 10, 25],
         order:[[1,"asc"]]
     } );
-    }, 5);
+    }, 500);
     
   }
   
@@ -43,5 +49,42 @@ export class MapsComponent implements OnInit {
       }
     );
   }
+
+  public getAgences(): void {
+    this.agenceService.getAgence().subscribe(
+      (response: Agence[]) => {
+        this.agences = response;  
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  OnSaveClient(f:any){
+    console.log(f.nom);
+    var client:Client;
+    this.clientAj.nom = f.nom;
+    this.agenceService.getAgenceById(f.agence).subscribe(
+      (response: Agence) => {
+        this.clientAj.agence = response;  
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+    this.clientAj.prenom = f.prenom;
+    this.clientAj.email = f.email;
+    this.clientAj.tele = f.tele;
+    this.clientService.addClient(this.clientAj).subscribe(
+      (response: Client) => {
+          console.log(response);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+
+}
 }
 

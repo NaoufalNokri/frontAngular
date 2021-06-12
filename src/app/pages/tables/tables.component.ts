@@ -27,7 +27,7 @@ export class TablesComponent implements OnInit {
         lengthMenu : [5, 10, 25],
         order:[[1,"asc"]]
     } );
-    }, 5);
+    }, 500);
     
   }
   
