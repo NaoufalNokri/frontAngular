@@ -5,10 +5,10 @@ import { AgentService } from 'src/app/services/agent.service';
 
 @Component({
   selector: 'app-tables',
-  templateUrl: './tables.component.html',
-  styleUrls: ['./tables.component.scss']
+  templateUrl: './agents.component.html',
+  styleUrls: ['./agents.component.scss']
 })
-export class TablesComponent implements OnInit {
+export class AgentsComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
   public agents: Agent[] = [];
@@ -28,7 +28,7 @@ export class TablesComponent implements OnInit {
         order:[[1,"asc"]]
     } );
     }, 500);
-    
+
   }
 
 

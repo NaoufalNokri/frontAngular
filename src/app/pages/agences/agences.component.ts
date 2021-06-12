@@ -9,10 +9,10 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'icons-tables',
-  templateUrl: './icons.component.html',
-  styleUrls: ['./icons.component.scss']
+  templateUrl: './agences.component.html',
+  styleUrls: ['./agences.component.scss']
 })
-export class IconsComponent implements OnInit {
+export class AgencesComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
   public agences: Agence[];
@@ -32,7 +32,7 @@ export class IconsComponent implements OnInit {
         order:[[1,"asc"]]
     } );
     }, 500);
-    
+
   }
 
 

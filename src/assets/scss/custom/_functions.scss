@@ -7,7 +7,7 @@
 @import "~bootstrap/scss/functions";
 
 
-// Retrieve color Sass maps
+// Retrieve color Sass clients
 
 @function section-color($key: "primary") {
 	@return map-get($section-colors, $key);

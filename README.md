@@ -130,7 +130,7 @@ argon-dashboard-angular
 │   │   │   │   ├── icons.component.html
 │   │   │   │   ├── icons.component.scss
 │   │   │   │   ├── icons.component.spec.ts
-│   │   │   │   └── icons.component.ts
+│   │   │   │   └── agences.component.ts
 │   │   │   ├── login
 │   │   │   │   ├── login.component.html
 │   │   │   │   ├── login.component.scss
@@ -139,8 +139,8 @@ argon-dashboard-angular
 │   │   │   ├── maps
 │   │   │   │   ├── maps.component.html
 │   │   │   │   ├── maps.component.scss
-│   │   │   │   ├── maps.component.spec.ts
-│   │   │   │   └── maps.component.ts
+│   │   │   │   ├── clients.component.spec.ts
+│   │   │   │   └── clients.component.ts
 │   │   │   ├── register
 │   │   │   │   ├── register.component.html
 │   │   │   │   ├── register.component.scss
@@ -149,8 +149,8 @@ argon-dashboard-angular
 │   │   │   ├── tables
 │   │   │   │   ├── tables.component.html
 │   │   │   │   ├── tables.component.scss
-│   │   │   │   ├── tables.component.spec.ts
-│   │   │   │   └── tables.component.ts
+│   │   │   │   ├── agents.component.spec.ts
+│   │   │   │   └── clients.component.ts
 │   │   │   └── user-profile
 │   │   │       ├── user-profile.component.html
 │   │   │       ├── user-profile.component.scss
