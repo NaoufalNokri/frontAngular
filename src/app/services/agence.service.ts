@@ -16,7 +16,7 @@ export class AgenceService {
     return this.http.get<Agence[]>(`${this.apiServerUrl}/agence/all`);
   }
 
-  public getAgenceById(id: number): Observable<Agence>{
+  public getAgenceById(id: number): Observable<Agence> {
     return this.http.get<Agence>(`${this.apiServerUrl}/agence/find/${id}`);
   }
 

@@ -1,7 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { Client } from 'src/app/interfaces/client';
 import { ClientService } from 'src/app/services/client.service';
+import {Subject} from 'rxjs';
+import {DataTableDirective} from 'angular-datatables';
 declare const google: any;
 
 @Component({
@@ -11,7 +13,10 @@ declare const google: any;
 })
 export class MapsComponent implements OnInit {
 
+  @ViewChild(DataTableDirective)
+  dtElement: DataTableDirective;
   dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
   public clients: Client[];
   constructor(private clientService: ClientService ) {}
 
@@ -28,15 +33,16 @@ export class MapsComponent implements OnInit {
         lengthMenu : [5, 10, 25],
         order:[[1,"asc"]]
     } );
-    }, 5);
-    
+    }, 100);
+
   }
-  
+
 
   public getClients(): void {
     this.clientService.getClients().subscribe(
       (response: Client[]) => {
-        this.clients = response;  
+        this.clients = response;
+        this.dtTrigger.next();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

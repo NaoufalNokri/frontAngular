@@ -29,15 +29,15 @@ export class IconsComponent implements OnInit {
         lengthMenu : [5, 10, 25],
         order:[[1,"asc"]]
     } );
-    }, 5);
-    
+    }, 100);
+
   }
-  
+
 
   public getAgences(): void {
     this.agenceService.getAgence().subscribe(
       (response: Agence[]) => {
-        this.agences = response;  
+        this.agences = response;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
