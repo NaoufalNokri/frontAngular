@@ -11,14 +11,14 @@ import { AgentService } from 'src/app/services/agent.service';
 export class TablesComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
-  public clients: Agent[];
+  public agents: Agent[];
   constructor(private agentService: AgentService ) {}
 
   ngOnInit() {
-    this.displayAllClients();
+    this.displayAllAgents();
   }
-  public displayAllClients():void{
-    this.getClients();
+  public displayAllAgents():void{
+    this.getAgents();
     setTimeout(()=>{
       $('#datatableexample').DataTable( {
         pagingType: 'full_numbers',
@@ -32,10 +32,10 @@ export class TablesComponent implements OnInit {
   }
   
 
-  public getClients(): void {
+  public getAgents(): void {
     this.agentService.getAgents().subscribe(
       (response: Agent[]) => {
-        this.clients = response;  
+        this.agents = response;  
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
