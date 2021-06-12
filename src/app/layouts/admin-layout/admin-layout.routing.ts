@@ -9,7 +9,7 @@ import { TablesComponent } from '../../pages/tables/tables.component';
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'user-profile',   component: UserProfileComponent },
-    { path: 'tables',         component: TablesComponent },
-    { path: 'icons',          component: IconsComponent },
-    { path: 'maps',           component: MapsComponent }
+    { path: 'agents',         component: TablesComponent },
+    { path: 'agence',          component: IconsComponent },
+    { path: 'clients',           component: MapsComponent }
 ];

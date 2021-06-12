@@ -11,7 +11,7 @@ import { AgentService } from 'src/app/services/agent.service';
 export class TablesComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
-  public agents: Agent[];
+  public agents: Agent[] = [];
   constructor(private agentService: AgentService ) {}
 
   ngOnInit() {
@@ -30,12 +30,12 @@ export class TablesComponent implements OnInit {
     }, 500);
     
   }
-  
+
 
   public getAgents(): void {
     this.agentService.getAgents().subscribe(
       (response: Agent[]) => {
-        this.agents = response;  
+        this.agents = response;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

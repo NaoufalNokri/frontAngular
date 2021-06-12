@@ -34,12 +34,12 @@ export class IconsComponent implements OnInit {
     }, 500);
     
   }
-  
+
 
   public getAgences(): void {
     this.agenceService.getAgence().subscribe(
       (response: Agence[]) => {
-        this.agences = response;  
+        this.agences = response;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
